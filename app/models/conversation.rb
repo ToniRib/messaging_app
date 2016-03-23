@@ -7,6 +7,6 @@ class Conversation < ActiveRecord::Base
 
   scope :find_conversation_between, -> (user, recipient) do
     where("user_id = ? AND recipient_id = ? OR recipient_id = ? AND user_id = ?",
-          user.id, recipient.id, recipient.id, user.id)
+          user.id, recipient.id, user.id, recipient.id)
   end
 end
