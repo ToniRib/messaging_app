@@ -1,14 +1,27 @@
 FactoryGirl.define do
-  factory :user do
+  factory :conversation do
+    user
+    recipient
+  end
+
+  factory :user, aliases: [:recipient] do
     username
-    first_name "Toni"
-    last_name "Rib"
+    first_name
+    last_name
     email
     password "password"
   end
 
-  sequence :username  do |i|
+  sequence :username do |i|
     "username#{i}"
+  end
+
+  sequence :first_name do |i|
+    "firstname#{i}"
+  end
+
+  sequence :last_name do |i|
+    "lastname#{i}"
   end
 
   sequence :email do |i|
