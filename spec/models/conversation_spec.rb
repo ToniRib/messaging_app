@@ -37,6 +37,7 @@ RSpec.describe Conversation, type: :model do
       expect(user_for_second_message).to eq(dan)
     end
   end
+
   describe ".find_conversation_between" do
     it "locates a conversation between two individuals when user started it" do
       toni = create(:user, first_name: "Toni")
@@ -44,7 +45,7 @@ RSpec.describe Conversation, type: :model do
       conversation = create(:conversation_with_messages,
                             user: toni, recipient: dan)
 
-      located_conversation = Conversation.find_conversation_between(toni, dan).first
+      located_conversation = Conversation.find_conversation_between(toni, dan)
 
       expect(located_conversation).to eq(conversation)
     end
@@ -55,7 +56,7 @@ RSpec.describe Conversation, type: :model do
       conversation = create(:conversation_with_messages,
                             user: dan, recipient: toni)
 
-      located_conversation = Conversation.find_conversation_between(toni, dan).first
+      located_conversation = Conversation.find_conversation_between(toni, dan)
 
       expect(located_conversation).to eq(conversation)
     end
