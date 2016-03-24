@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   has_many :conversations
 
   scope :all_except, -> (username) { User.where('username NOT LIKE ?', username) }
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

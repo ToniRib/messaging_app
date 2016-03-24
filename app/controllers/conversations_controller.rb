@@ -2,6 +2,7 @@ class ConversationsController < ApplicationController
   before_action :require_user
 
   def show
+    @recipient = User.find(params[:id])
   end
 
   private

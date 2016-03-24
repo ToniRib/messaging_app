@@ -19,4 +19,14 @@ RSpec.describe User, type: :model do
       expect(users).to include(user3)
     end
   end
+
+  describe "#full_name" do
+    it "returns the user's first and last name" do
+      user = create(:user, first_name: "Toni", last_name: "Rib")
+
+      full_name = user.full_name
+
+      expect(full_name).to eq("Toni Rib")
+    end
+  end
 end
