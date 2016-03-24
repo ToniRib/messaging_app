@@ -22,4 +22,23 @@ RSpec.describe "User has a conversation", type: :feature do
       expect(page).to have_content(recipient.username)
     end
   end
+
+  scenario "user sends a message", js: true do
+    conversation = create(:conversation_with_messages)
+    user = conversation.user
+    recipient = conversation.recipient
+
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(user)
+
+    visit conversation_path(recipient)
+
+    fill_in "new_message", with: "new message"
+    click_on "Send"
+
+    within "#messages" do
+      expect(page).to have_content("new message")
+    end
+  end
 end

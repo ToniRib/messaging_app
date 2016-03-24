@@ -4,12 +4,26 @@
       <h2>Conversation with <%= @conversation.recipient.full_name %></h2>
     </div>
   </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= text_area_tag :new_message, nil, placeholder: "Type message here" %>
+      <button class="btn send-btn" id="send-message">Send</button>
+    </div>
+  </div>
   <div id="messages">
   </div>
 </div>
 
 <script type="text/javascript">
+  var conversationId = <%= @conversation.id %>;
+  var userId = <%= current_user.id %>;
+
   $(document).ready(function(){
-    getMessages(<%= @conversation.id %>);
+    getMessages(conversationId);
+
+    $('#send-message').on('click', function() {
+      var body = $('#new_message').val();
+      saveMessageToConversation(body, conversationId, userId);
+    });
   });
 </script>

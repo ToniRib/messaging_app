@@ -1,9 +1,9 @@
-var getMessages = function(conversation_id){
+var getMessages = function(conversationId){
   $.ajax({
     url: "/api/v1/messages",
     type: "GET",
     data: {
-      conversation_id: conversation_id
+      conversation_id: conversationId
     },
     success: function(messages) {
       messages.forEach(function(message) {
