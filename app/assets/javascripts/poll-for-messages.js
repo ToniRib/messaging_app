@@ -1,4 +1,4 @@
-var pollForMessages = function(conversationId) {
+var pollForMessages = function() {
   getMessages(conversationId);
 };
 
