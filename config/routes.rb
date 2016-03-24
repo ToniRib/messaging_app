@@ -9,4 +9,10 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :messages, only: [:index]
+    end
+  end
 end
