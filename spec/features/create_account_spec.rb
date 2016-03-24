@@ -5,7 +5,7 @@ RSpec.describe "Create account", type: :feature do
     visit root_path
     click_on "Create an Account"
 
-    expect(current_path).to eq(new_user_path)
+    expect(current_path).to eq(new_account_path)
 
     fill_in "Username", with: "tonirib"
     fill_in "First name", with: "Toni"
@@ -31,7 +31,7 @@ RSpec.describe "Create account", type: :feature do
     click_on "Create My Account"
 
     expect(current_path).to eq(users_path)
-    expect(page).to have_content("1 error prohibited this record from being saved")
+    expect(page).to have_content("1 error prohibited this account from being saved")
     expect(page).to have_content("Password confirmation doesn't match Password")
   end
 end
