@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: "welcome#index"
+
   resources :users, only: [:new, :create]
+  resources :conversations, only: [:show]
+
   get "/new_account", to: "users#new"
   get "/dashboard", to: "dashboard#show"
   get "/login", to: "sessions#new"

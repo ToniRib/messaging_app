@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   validates :last_name,  presence: true
 
   has_many :conversations
+
+  scope :all_except, -> (username) { User.where('username NOT LIKE ?', username) }
 end

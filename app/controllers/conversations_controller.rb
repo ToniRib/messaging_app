@@ -1,8 +1,7 @@
-class DashboardController < ApplicationController
+class ConversationsController < ApplicationController
   before_action :require_user
 
   def show
-    @users = User.all_except(current_user.username)
   end
 
   private
