@@ -85,4 +85,28 @@ RSpec.describe Conversation, type: :model do
       expect(other_person).to eq(dan)
     end
   end
+
+  describe ".find_or_create_by_relationship" do
+    it "finds an existing conversation" do
+      toni = create(:user, first_name: "Toni")
+      dan = create(:user, first_name: "Dan")
+      conversation = create(:conversation_with_messages,
+                            user: dan, recipient: toni)
+
+      found_convo = Conversation.find_or_create_by_relationship(dan, toni)
+
+      expect(found_convo).to eq(conversation)
+    end
+
+    it "creates a new conversation if one did not exist" do
+      toni = create(:user, first_name: "Toni")
+      dan = create(:user, first_name: "Dan")
+      conversation = Conversation.find_or_create_by_relationship(dan, toni)
+
+      expect(conversation.class).to eq(Conversation)
+      expect(conversation.messages.count).to eq(0)
+      expect(conversation.user).to eq(dan)
+      expect(conversation.recipient).to eq(toni)
+    end
+  end
 end

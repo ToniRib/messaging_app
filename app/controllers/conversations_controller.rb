@@ -3,14 +3,14 @@ class ConversationsController < ApplicationController
 
   def show
     recipient = User.find(params[:id])
-    if Conversation.find_conversation_between(current_user, recipient).class == Conversation
-      @conversation = Conversation.find_conversation_between(current_user, recipient)
-    else
-      @conversation = Conversation.create(user_id: current_user.id, recipient_id: recipient.id)
-    end
+    @conversation = find_conversation(current_user, recipient)
   end
 
   private
+
+  def find_conversation(user, recipient)
+    Conversation.find_or_create_by_relationship(user, recipient)
+  end
 
   def require_user
     render file: "public/404" unless current_user

@@ -10,6 +10,15 @@ class Conversation < ActiveRecord::Base
           user.id, recipient.id, user.id, recipient.id).first
   end
 
+  def self.find_or_create_by_relationship(user, recipient)
+    conversation = Conversation.find_conversation_between(user, recipient)
+    if conversation.is_a?(Conversation)
+      conversation
+    else
+      Conversation.create(user_id: user.id, recipient_id: recipient.id)
+    end
+  end
+
   def other_person(current_user)
     current_user == recipient ? user : recipient
   end
