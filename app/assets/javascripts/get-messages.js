@@ -17,9 +17,9 @@ var getMessages = function(conversationId){
 var addCorrectColor = function(message) {
   var $messageUsername = $('#messages').find('.message-username').first();
   if (message.username === currentUsername) {
-    $messageUsername.css('color', 'red');
+    $messageUsername.css('color', '#04c669');
   } else {
-    $messageUsername.css('color', 'blue');
+    $messageUsername.css('color', '#00a1ff');
   }
 };
 
@@ -35,7 +35,7 @@ var prependMessageToPage = function(message) {
                         "<h5 class='message-time'>" + message.sent_at + "</h5>" +
                         "</div>" +
                         "<div class='row'>" +
-                        "<div class='col-sm-12'>" +
+                        "<div class='col-sm-8'>" +
                         "<p class='message-body'>" + message.body + "</p>" +
                         "</div>" +
                         "</div>" +
