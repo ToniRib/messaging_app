@@ -12,6 +12,7 @@ class Conversation < ActiveRecord::Base
 
   def self.find_or_create_by_relationship(user, recipient)
     conversation = Conversation.find_conversation_between(user, recipient)
+
     if conversation.is_a?(Conversation)
       conversation
     else
