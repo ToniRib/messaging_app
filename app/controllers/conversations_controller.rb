@@ -3,7 +3,11 @@ class ConversationsController < ApplicationController
 
   def show
     recipient = User.find(params[:id])
-    @conversation = Conversation.find_conversation_between(current_user, recipient)
+    if Conversation.find_conversation_between(current_user, recipient).class == Conversation
+      @conversation = Conversation.find_conversation_between(current_user, recipient)
+    else
+      @conversation = Conversation.create(user_id: current_user.id, recipient_id: recipient.id)
+    end
   end
 
   private

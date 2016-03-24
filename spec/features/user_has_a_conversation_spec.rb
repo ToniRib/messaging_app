@@ -1,6 +1,21 @@
 require "rails_helper"
 
 RSpec.describe "User has a conversation", type: :feature do
+  scenario "user starts a new conversation", js: true do
+    user = create(:user)
+    recipient = create(:recipient)
+
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(user)
+
+    visit dashboard_path
+    click_on "Message #{recipient.first_name}"
+
+    expect(current_path).to eq(conversation_path(recipient))
+    expect(page).to have_content("Conversation with #{recipient.full_name}")
+  end
+
   scenario "user views a conversation", js: true do
     conversation = create(:conversation_with_messages)
     user = conversation.user
