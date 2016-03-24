@@ -9,4 +9,8 @@ class Conversation < ActiveRecord::Base
     where("user_id = ? AND recipient_id = ? OR recipient_id = ? AND user_id = ?",
           user.id, recipient.id, user.id, recipient.id).first
   end
+
+  def other_person(current_user)
+    current_user == recipient ? user : recipient
+  end
 end

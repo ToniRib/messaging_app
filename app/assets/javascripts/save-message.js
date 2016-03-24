@@ -8,7 +8,7 @@ var saveMessageToConversation = function(body, conversationId, userId) {
       user_id: userId
     },
     success: function(message) {
-      appendMessageToPage(message);
+      prependMessageToPage(message);
     }
   });
 };

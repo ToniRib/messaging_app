@@ -6,15 +6,16 @@ var getMessages = function(conversationId){
       conversation_id: conversationId
     },
     success: function(messages) {
+      clearAllMessages();
       messages.forEach(function(message) {
-        appendMessageToPage(message);
+        prependMessageToPage(message);
       });
     }
   });
 };
 
-var appendMessageToPage = function(message) {
-  $('#messages').append("<div class='row'>" +
+var prependMessageToPage = function(message) {
+  $('#messages').prepend("<div class='row message'>" +
                         "<div class='col-sm-12'>" +
                         "<div class='row'>" +
                         "<div class='col-sm-6 left'>" +
