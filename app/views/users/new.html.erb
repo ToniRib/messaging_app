@@ -32,7 +32,9 @@
           <%= f.label :password_confirmation, class: "col-sm-4" %>
           <%= f.password_field :password_confirmation, class: "col-sm-8", required: true %>
         </div>
-        <%= f.submit "Create My Account" %>
+        <div class="text-center">
+          <%= f.submit "Create My Account", class: "btn submit-btn" %>
+        </div>
       <% end %>
     </div>
   </div>

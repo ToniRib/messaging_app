@@ -1,9 +1,9 @@
 <% if target.errors.any? %>
-  <div class="col-sm-12 text-center">
-    <h4> <%=  pluralize(target.errors.count, "error") %> prohibited this record from being saved: </h4>
+  <div class="col-sm-12 text-center errors">
+    <h4><%=  pluralize(target.errors.count, "error") %> prohibited this account from being saved:</h4>
     <ul>
       <% target.errors.full_messages.each do |message| %>
-        <li><strong class="error"> <%= message %> </strong> </li>
+        <li><strong class="error"> <%= message %></strong> </li>
       <% end %>
     </ul>
   </div>

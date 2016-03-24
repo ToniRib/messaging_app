@@ -2,5 +2,30 @@
 
 .form-horizontal {
   max-width: 600px;
-  margin: 50px auto 0;
+  margin: 20px auto 0;
+}
+
+.submit-btn {
+  background: #05aebf;
+  color: black;
+
+  &:hover {
+    background: #04c669;
+  }
+}
+
+// ----- FORM ERRORS -----
+
+.errors  {
+  color: rgb(191, 23, 11);
+  margin-bottom: 20px;
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
 }
