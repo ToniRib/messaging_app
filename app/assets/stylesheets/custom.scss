@@ -103,12 +103,16 @@ a {
 }
 
 .submit-btn,
-.login-btn {
+.login-btn,
+.send-btn {
   background: $button-main;
-  color: black;
+  color: white;
+  text-transform: uppercase;
+  width: 100px;
 
   &:hover {
     background: $button-hover;
+    color: white;
   }
 }
 
@@ -128,6 +132,14 @@ a {
 
 }
 
+// ----- CONVERSATIONS -----
+
+.recipient-name {
+  color: $highlight-green;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 // ----- CHAT BOX -----
 
 textarea {
@@ -136,13 +148,28 @@ textarea {
 
 .send-btn {
   vertical-align: top;
+  margin: 6px 10px 0;
 }
 
-#messages {
+.message-box {
   overflow-y: scroll;
   height: 600px;
 }
 
 .message {
   padding-left: 30px;
+}
+
+.message-body {
+  font-size: 15px;
+  padding-left: 40px;
+}
+
+.red {
+  color: red;
+}
+
+.message-time {
+  font-size: 14px;
+  font-style: italic;
 }

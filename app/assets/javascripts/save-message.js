@@ -9,6 +9,7 @@ var saveMessageToConversation = function(body, conversationId, userId) {
     },
     success: function(message) {
       prependMessageToPage(message);
+      addCorrectColor(message);
     }
   });
 };
