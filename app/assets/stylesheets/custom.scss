@@ -1,3 +1,66 @@
+// ----- IMPORT COLORS -----
+
+@import "colors";
+
+// ----- IMPORT MIXINS -----
+
+@import "mixins";
+
+// ----- IMPORT FONT -----
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300);
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+// ----- WELCOME PAGE -----
+
+.title-block {
+  margin-top: 100px;
+}
+
+.welcome-title {
+  font-size: 65px;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+}
+
+.welcome-tagline {
+  color: grey;
+  font-size: 16px;
+}
+
+.welcome-links {
+  margin: 40px auto 0;
+  border: 3px solid $link-main;
+  padding: 10px 0;
+  width: 250px;
+}
+
+// ----- NAVBAR -----
+
+.navbar-default {
+  background-color: $navbar;
+  border-color: $navbar;
+  border-radius: 0;
+
+  .navbar-brand{
+    @include nav-link;
+  }
+
+  .navbar-nav > li > a {
+    @include nav-link;
+  }
+
+}
+
+// ----- LINKS -----
+
+a {
+  @include main-link;
+}
+
 // ----- FORMS -----
 
 .form-horizontal {
@@ -7,18 +70,18 @@
 
 .submit-btn,
 .login-btn {
-  background: #05aebf;
+  background: $button-main;
   color: black;
 
   &:hover {
-    background: #04c669;
+    background: $button-hover;
   }
 }
 
 // ----- FORM ERRORS -----
 
 .errors  {
-  color: rgb(191, 23, 11);
+  color: $error-message;
   margin-bottom: 20px;
 
   ul {
