@@ -102,18 +102,14 @@ a {
   margin: 20px auto 0;
 }
 
-.submit-btn,
+.submit-btn {
+  @include main-button;
+  width: 200px;
+}
+
 .login-btn,
 .send-btn {
-  background: $button-main;
-  color: white;
-  text-transform: uppercase;
-  width: 100px;
-
-  &:hover {
-    background: $button-hover;
-    color: white;
-  }
+  @include main-button;
 }
 
 // ----- FORM ERRORS -----
