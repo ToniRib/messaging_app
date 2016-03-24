@@ -4,6 +4,12 @@
       <h2>Conversation with <%= @conversation.recipient.full_name %></h2>
     </div>
   </div>
-  <div class="messages">
+  <div id="messages">
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    getMessages(<%= @conversation.id %>);
+  });
+</script>
