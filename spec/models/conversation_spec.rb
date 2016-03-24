@@ -61,4 +61,28 @@ RSpec.describe Conversation, type: :model do
       expect(located_conversation).to eq(conversation)
     end
   end
+
+  describe "#other_person" do
+    it "returns the recipient if passed the user" do
+      toni = create(:user, first_name: "Toni")
+      dan = create(:user, first_name: "Dan")
+      conversation = create(:conversation_with_messages,
+                            user: dan, recipient: toni)
+
+      other_person = conversation.other_person(dan)
+
+      expect(other_person).to eq(toni)
+    end
+
+    it "returns the recipient if passed the recipient" do
+      toni = create(:user, first_name: "Toni")
+      dan = create(:user, first_name: "Dan")
+      conversation = create(:conversation_with_messages,
+                            user: dan, recipient: toni)
+
+      other_person = conversation.other_person(toni)
+
+      expect(other_person).to eq(dan)
+    end
+  end
 end

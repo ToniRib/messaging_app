@@ -40,3 +40,12 @@ textarea {
 .send-btn {
   vertical-align: top;
 }
+
+#messages {
+  overflow-y: scroll;
+  height: 600px;
+}
+
+.message {
+  padding-left: 30px;
+}
