@@ -13,7 +13,7 @@ RSpec.describe "User has a conversation", type: :feature do
     click_on "Message #{recipient.first_name}"
 
     expect(current_path).to eq(conversation_path(recipient))
-    expect(page).to have_content("Conversation with #{recipient.full_name}")
+    expect(page).to have_content("Conversation with #{recipient.full_name.upcase}")
   end
 
   scenario "user views a conversation", js: true do
