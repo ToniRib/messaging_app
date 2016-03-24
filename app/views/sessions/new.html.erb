@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h2>Log In</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= form_for :session, url: login_path, :html => {class: "form-horizontal"} do |f| %>
+        <div class="form-group">
+          <%= f.label :username, class: "col-sm-4" %>
+          <%= f.text_field :username, class: "col-sm-8", required: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password, class: "col-sm-4" %>
+          <%= f.password_field :password, class: "col-sm-8", required: true %>
+        </div>
+        <div class="text-center">
+          <%= f.submit "Log In", class: "btn login-btn" %>
+        </div>
+      <% end  %>
+    </div>
+  </div>
+</div>
