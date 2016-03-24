@@ -1,25 +1,19 @@
 <div class="container text-center">
   <div class="row">
     <div class="col-sm-12">
-      <h2>Welcome, <%= current_user.first_name %></h2>
+      <h2 class="dashboard-welcome-msg">Welcome, <%= current_user.first_name %></h2>
+      <hr>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <h4>Who do you want to chat with?</h4>
+      <h4 class="dashboard-prompt">Who do you want to chat with?</h4>
     </div>
   </div>
   <div class="row users-list">
     <div class="col-sm-12">
       <% @users.each do |user| %>
-        <div class="row">
-          <div class="col-sm-6">
-            <p><%= user.username %></p>
-          </div>
-          <div class="col-sm-6">
-            <%= link_to "Message #{user.first_name}", conversation_path(user) %>
-          </div>
-        </div>
+        <%= render partial: "user", locals: { user: user } %>
       <% end %>
     </div>
   </div>

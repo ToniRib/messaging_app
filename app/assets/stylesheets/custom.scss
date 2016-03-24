@@ -55,6 +55,40 @@ body {
 
 }
 
+// ----- DASHBOARD -----
+
+.dashboard-welcome-msg {
+  font-size: 36px;
+}
+
+hr {
+  border: 1px solid $button-hover;
+  height: 0;
+  margin: 3px 0 25px;
+}
+
+.dashboard-prompt {
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.users-list {
+  border: 1px solid black;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.user {
+  margin: 15px 0;
+
+  p,
+  a {
+    font-size: 16px;
+    margin: 0;
+  }
+
+}
+
 // ----- LINKS -----
 
 a {
