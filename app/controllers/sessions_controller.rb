@@ -9,15 +9,19 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
-      account_link = "#{view_context.link_to('Create new account?',
-                                              new_account_path)}"
-      flash[:error] = "Invalid login credentials. #{account_link}"
+      flash[:error] = "Invalid login credentials. #{create_account_link}"
       redirect_to login_path
     end
   end
 
   def destroy
     session.clear
-    redirect_to "/"
+    redirect_to root_path
+  end
+
+  private
+
+  def create_account_link
+    "#{view_context.link_to('Create new account?', new_account_path)}"
   end
 end
