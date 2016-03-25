@@ -15,23 +15,21 @@
 </div>
 
 <script type="text/javascript">
-  var conversationId = <%= @conversation.id %>;
-  var userId = <%= current_user.id %>;
   var currentUsername = "<%= current_user.username %>";
 
   $(document).ready(function(){
-    getMessages(conversationId);
+    getMessages();
 
     $('#send-message').on('click', function() {
       var body = $('#new_message').val();
-      saveMessageToConversation(body, conversationId, userId);
+      saveMessageToConversation(body);
     });
 
     $('#new_message').on('keypress', function(e) {
       if (e.which === 13) {
         var body = $('#new_message').val();
         $('#new_message').val('').blur();
-        saveMessageToConversation(body, conversationId, userId);
+        saveMessageToConversation(body);
       }
     });
 

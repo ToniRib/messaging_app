@@ -1,16 +1,16 @@
 var pollForMessages = function() {
-  var mostRecentMessageId = $('#messages').find('.message').first().attr('id');
-  getNewMessages(conversationId, mostRecentMessageId);
+  getNewMessages();
 };
 
-var getNewMessages = function(conversationId, mostRecentMessageId) {
+var getNewMessages = function() {
   $.ajax({
     url: "/api/v1/messages",
     type: "GET",
     data: {
-      conversation_id: conversationId
+      recipient_id: getRecipientId()
     },
     success: function(messages) {
+      var mostRecentMessageId = $('#messages').find('.message').first().attr('id');
       messages.forEach(function(message) {
         if (messagesExist(mostRecentMessageId) && thisMessageIsNew(message.id, mostRecentMessageId)) {
           prependMessageToPage(message);

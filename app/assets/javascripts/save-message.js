@@ -1,11 +1,10 @@
-var saveMessageToConversation = function(body, conversationId, userId) {
+var saveMessageToConversation = function(body) {
   $.ajax({
     url: '/api/v1/messages',
     type: 'POST',
     data: {
       body: body,
-      conversation_id: conversationId,
-      user_id: userId
+      recipient_id: getRecipientId()
     },
     success: function(message) {
       prependMessageToPage(message);

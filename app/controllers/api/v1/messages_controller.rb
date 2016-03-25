@@ -8,12 +8,15 @@ class Api::V1::MessagesController < ApplicationController
 
   def create
     respond_with :api, :v1, @conversation.messages.create(body: params[:body],
-                                                          user_id: params[:user_id])
+                                                          user_id: session[:user_id])
   end
 
   private
 
   def set_conversation
-    @conversation = Conversation.find(params[:conversation_id])
+    user = User.find(session[:user_id])
+    recipient = User.find(params[:recipient_id])
+
+    @conversation = Conversation.find_or_create_by_relationship(user, recipient)
   end
 end

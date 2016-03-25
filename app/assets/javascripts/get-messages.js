@@ -1,9 +1,9 @@
-var getMessages = function(conversationId){
+var getMessages = function(){
   $.ajax({
     url: "/api/v1/messages",
     type: "GET",
     data: {
-      conversation_id: conversationId
+      recipient_id: getRecipientId()
     },
     success: function(messages) {
       messages.forEach(function(message) {
@@ -12,6 +12,10 @@ var getMessages = function(conversationId){
       });
     }
   });
+};
+
+var getRecipientId = function() {
+  return window.location.href.split('/')[window.location.href.split('/').length - 1];
 };
 
 var addCorrectColor = function(message) {
