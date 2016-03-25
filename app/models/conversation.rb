@@ -20,15 +20,6 @@ class Conversation < ActiveRecord::Base
     end
   end
 
-  def self.find_with_username(conversation_id, user_id)
-    conversation = Conversation.find(conversation_id)
-    if conversation.user.id == user_id
-      conversation
-    else
-      nil
-    end
-  end
-
   def other_person(current_user)
     current_user == recipient ? user : recipient
   end

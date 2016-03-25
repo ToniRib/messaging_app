@@ -7,7 +7,11 @@ RSpec.describe Api::V1::MessagesController, type: :controller do
     it "returns a successful HTTP 200 status code" do
       conversation = create(:conversation_with_messages)
 
-      get :index, format: :json, conversation_id: conversation.id
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user)
+        .and_return(conversation.user)
+
+      get :index, format: :json, recipient_id: conversation.recipient.id
 
       expect(response.status).to eq(200)
       expect(response).to be_successful
@@ -17,7 +21,11 @@ RSpec.describe Api::V1::MessagesController, type: :controller do
       conversation = create(:conversation_with_messages)
       message1, message2 = conversation.messages
 
-      get :index, format: :json, conversation_id: conversation.id
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user)
+        .and_return(conversation.user)
+
+      get :index, format: :json, recipient_id: conversation.recipient.id
 
       expect(json_response.first[:body]).to eq(message1.body)
       expect(json_response.first[:username]).to eq(message1.user.username)
@@ -34,7 +42,11 @@ RSpec.describe Api::V1::MessagesController, type: :controller do
     it "returns a successful HTTP 200 status code" do
       conversation = create(:conversation_with_messages)
 
-      post :create, format: :json, conversation_id: conversation.id,
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user)
+        .and_return(conversation.user)
+
+      post :create, format: :json, recipient_id: conversation.recipient.id,
                                    user_id: conversation.user.id,
                                    body: "message body"
 
@@ -45,7 +57,11 @@ RSpec.describe Api::V1::MessagesController, type: :controller do
     it "returns a list of messages for a given conversation" do
       conversation = create(:conversation_with_messages)
 
-      post :create, format: :json, conversation_id: conversation.id,
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user)
+        .and_return(conversation.user)
+
+      post :create, format: :json, recipient_id: conversation.recipient.id,
                                    user_id: conversation.user.id,
                                    body: "message body"
 
